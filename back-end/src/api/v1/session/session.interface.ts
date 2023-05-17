@@ -1,6 +1,6 @@
 interface Query {
     short_title?: string;
-    status?: string;
+    status?: 'offering' | 'running' | 'offboarding';
 }
 
 export {Query}
