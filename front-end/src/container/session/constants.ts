@@ -1,0 +1,2 @@
+export const LOAD_SESSION = 'LOAD_SESSION';
+export const LOADED_SESSION = 'LOADED_SESSION';
