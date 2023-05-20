@@ -30,7 +30,7 @@ Run front-end by
 ```bash
 cd front-end && npm start
 ```
-front end should be running on port 4000
+front end should be running on port 3000
 Visit http://localhost:3000/ to make sure that front end is running
 
 The result shoud be like this video
