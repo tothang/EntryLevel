@@ -1,23 +1,26 @@
 import React from 'react';
+import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from "@mui/material";
 
-function DropDown() {
+function DropDown({...props}) {
+    const {label, listItem, handleChange, value} = props;
+
     return (
-        <div className="App">
-            <header className="App-header">
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    -        Learn React
-                    +        Learn React!!!
-                </a>
-            </header>
-        </div>
+        <FormControl fullWidth>
+            <InputLabel>{label}</InputLabel>
+            <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={value}
+                label={label}
+                onChange={handleChange}
+            >
+                {listItem.map((item:any, index: any) => {
+                    return (
+                        <MenuItem key={index} value={item.value}>{item.label}</MenuItem>
+                    )
+                })}
+            </Select>
+        </FormControl>
     );
 }
 

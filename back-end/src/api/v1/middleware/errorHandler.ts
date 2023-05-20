@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { CustomError } from '@server/utils/custum-error';
+import { CustomError } from '../helper/custom-error';
 
 export const errorHandler = (err: CustomError, req: Request, res: Response, next: NextFunction) => {
     if (!err.HttpStatusCode) {

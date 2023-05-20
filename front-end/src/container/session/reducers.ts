@@ -3,7 +3,7 @@ import {LOADED_SESSION, LOAD_SESSION} from './constants'
 const initialState = {
     loaded: false,
     error: false,
-    groupTags: [],
+    list: [],
 };
 
 export default function Init(state = initialState, action:any) {
@@ -15,7 +15,7 @@ export default function Init(state = initialState, action:any) {
             return {
                 ...state,
                 loaded: payload.loaded,
-                groupTags: payload.groupTags
+                list: payload.list
             };
         default:
             return state

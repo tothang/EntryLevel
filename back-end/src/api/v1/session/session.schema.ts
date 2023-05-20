@@ -4,6 +4,13 @@ export const Session = new mongoose.Schema({
     name: String,
     status: String,
     id: String,
-    program: [{ type: String, ref: 'Program' }],
+    start_date: Date,
+    end_data: Date,
+    program: [
+        {
+            type: String,
+            ref: 'Program'
+        }
+    ],
 });
 

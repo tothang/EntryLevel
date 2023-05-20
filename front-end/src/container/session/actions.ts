@@ -1,8 +1,11 @@
-import {LOAD_SESSION,LOADED_SESSION} from './constants'
+import {LOAD_SESSION} from './constants'
 
-
-export function loadHome() {
+export function loadSession(short_title:string, status:string) {
 	return {
 		type: LOAD_SESSION,
+		filter: {
+			short_title: short_title,
+			status: status
+		}
 	}
 }

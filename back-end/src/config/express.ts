@@ -1,11 +1,13 @@
 import express from 'express';
 import routes from '@server/api/v1/routes';
 import morgan from 'morgan';
+import cors from 'cors';
 // import connectDB from '../database/mongodb';
 
 const createServer = (): express.Application => {
     const app = express();
-
+    app.use(cors());
+    app.disable('etag');
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
 

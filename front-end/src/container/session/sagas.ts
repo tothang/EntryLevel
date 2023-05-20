@@ -1,30 +1,31 @@
 import {call, fork, put, takeLatest} from "redux-saga/effects";
 import Services from './service';
 import {LOAD_SESSION, LOADED_SESSION} from "./constants";
-interface ITodo {
-	groupTags: any[];
+interface IRequest {
+	data?: any;
 }
+
 function* fetchSessions(action:any) {
-	// const currentState = yield select((state => state.users));
+	const {filter} = action;
 	try {
-		const home:ITodo = yield call(Services.getSessions);
+		const list:IRequest = yield call(Services.getSessions, filter);
 		yield put({
-			type: LOAD_SESSION,
+			type: LOADED_SESSION,
 			payload: {
-				groupTags: home.groupTags,
+				list: list,
 				loaded: true,
 				error: false
 			}
 		});
 	} catch (e) {
 		console.log(e)
-		yield put({type: LOADED_SESSION, payload: {lists: {}, loaded: false, error: true}});
+		yield put({type: LOADED_SESSION, payload: {list: [], loaded: false, error: true}});
 	}
 
 }
 
 function* watchFetchSessions() {
-	yield takeLatest(LOADED_SESSION, fetchSessions);
+	yield takeLatest(LOAD_SESSION, fetchSessions);
 }
 
 export default function* sessionSagas() {
