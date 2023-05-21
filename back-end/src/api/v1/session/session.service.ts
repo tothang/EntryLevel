@@ -17,6 +17,15 @@ const getListSession = async (query :Query) => {
     if (status) urlFilter = `${urlFilter}&status=${status.toUpperCase()}`;
     let result: AxiosResponse = await axios.get(`https://api.entrylevel.net/test/sessions${urlFilter}`);
     let list =  result.data;
+    if (short_title || status) {
+        list = list.filter((element) => {
+            if (short_title) return element.program[0].short_title === short_title;
+            if (status) return element.status === status;
+            if (short_title && status) return element.program[0].short_title === short_title && element.status === status;
+            return element;
+        });
+    }
+
     // @ts-ignore
     list.sort((a:any,b:any) => moment(b.start_date).format('YYYYMMDD') - moment(a.start_date).format('YYYYMMDD'))
     return list.slice(0,50);

@@ -20,6 +20,7 @@ function Filters() {
     };
 
     const arrShortTitle = [
+        {label: 'all', value: ''},
         {label: 'vc', value: 'vc'},
         {label: 'product', value: 'product'},
         {label: 'data', value: 'data'},
@@ -31,6 +32,7 @@ function Filters() {
     ]
 
     const arrStatus = [
+        {label: 'all', value: ''},
         {label: 'offering', value: 'OFFERING'},
         {label: 'running', value: 'RUNNING'},
         {label: 'offboarding', value: 'OFFBOARDING'}
