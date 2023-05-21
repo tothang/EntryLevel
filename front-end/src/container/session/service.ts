@@ -1,5 +1,4 @@
 import axios from "axios";
-import moment from "moment";
 
 const getSessions = async (_filter: any) => {
 	const {short_title, status} = _filter;
@@ -8,10 +7,7 @@ const getSessions = async (_filter: any) => {
 	if (short_title) urlFilter = `${urlFilter}short_title=${short_title}`;
 	if (status) urlFilter = `${urlFilter}&status=${status.toUpperCase()}`;
 	const result = await axios.get(`${baseUrl}${urlFilter}`);
-	let list =  result.data.message;
-	// @ts-ignore
-	list.sort((a:any,b:any) => moment(b.start_date).format('YYYYMMDD') - moment(a.start_date).format('YYYYMMDD'));
-	return list.slice(0,50);
+	return result?.data?.message;
 }
 export default {
 	getSessions
