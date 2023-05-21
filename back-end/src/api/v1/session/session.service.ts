@@ -1,6 +1,5 @@
 import axios, {AxiosResponse} from "axios";
 import { Query } from "./session.interface"
-import {logger} from "@server/config/logger"
 import moment from "moment";
 //import { SessionModel } from './session.model';
 
